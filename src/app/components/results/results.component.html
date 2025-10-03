@@ -1,0 +1,36 @@
+<div class="results-container">
+  <div class="content-wrapper">
+    <h1 class="main-title">Your Typing Results</h1>
+    <p class="subtitle">See how you performed and what car matches your style!</p>
+    
+    <div class="stats">
+      <div class="stat">
+        <span class="stat-value">{{ wpm }}</span>
+        <span class="stat-label">WPM</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">{{ accuracy | number:'1.1-1' }}%</span>
+        <span class="stat-label">accuracy</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">{{ timeTaken }}</span>
+        <span class="stat-label">seconds taken</span>
+      </div>
+    </div>
+    
+    <div class="car-section">
+      <div class="car-image">
+        <img [src]="carImage" alt="{{ carType }} image" class="car-img" />
+      </div>
+      <div class="car-content">
+        <h2 class="car-title">Your Car Type: {{ carType }}</h2>
+        <p class="car-description">{{ carDescription }}</p>
+      </div>
+    </div>
+    
+    <div class="button-group">
+      <button class="save-btn" (click)="saveResult()">Save Result</button>
+      <button class="try-again-btn" (click)="tryAgain()">Try Again</button>
+    </div>
+  </div>
+</div>

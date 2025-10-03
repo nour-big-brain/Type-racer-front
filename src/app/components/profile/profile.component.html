@@ -1,0 +1,42 @@
+<div class="profile-container">
+  <div class="content-wrapper">
+    <h1 class="main-title">Your Profile</h1>
+    <p class="subtitle">View your details and typing results</p>
+    
+    <div class="profile-info">
+      <h2 class="section-title">User Information</h2>
+      <p><strong>Username:</strong> {{ username }}</p>
+      <p><strong>Email:</strong> {{ email }}</p>
+    </div>
+    
+    <div class="results-section">
+      <h2 class="section-title">Your Typing Results</h2>
+      <div class="error" *ngIf="errorMessage">{{ errorMessage }}</div>
+      @if(results.length > 0){
+      <table class="results-table" >
+        <thead>
+          <tr>
+            <th>WPM</th>
+            <th>Accuracy</th>
+            <th>Time Taken (s)</th>
+          </tr>
+        </thead>
+        <tbody>
+        @for(result of results;track $index){
+            <tr>
+            <td>{{ result.wpm }}</td>
+            <td>{{ result.accurracy | number:'1.1-1' }}%</td>
+            <td>{{ result.timeTaken }}</td>
+          </tr>}
+        </tbody>
+      </table>}
+      @if(results.length === 0){
+      <p >No results found. Try a typing test!</p>}
+    </div>
+    
+    <div class="button-group">
+      <button class="test-btn" (click)="route()">Take a Test</button>
+      <button class="logout-btn" (click)="logout()">Logout</button>
+    </div>
+  </div>
+</div>

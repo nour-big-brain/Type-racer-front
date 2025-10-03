@@ -1,0 +1,20 @@
+<header>
+  <div style="background-color: #a3a6ff; padding: 10px; display: flex; justify-content: space-between; align-items: center; color: white;">
+    <span style="margin-left: 10px;">★ TypeRacer</span>
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <a href="#" style="color: white; margin: 0 10px;">Home</a>
+      <a routerLink="/leaderboard" style="color: white; margin: 0 10px;">Leaderboard</a>
+
+      
+      @if (isLoggedIn()) {
+        <a routerLink="/profile" style="color: white; margin-left: 10px; font-size: 24px; text-decoration: none;" title="Profile">
+          👤
+        </a>
+      } @else {
+        <a routerLink="/login" style="color: white; margin-left: 10px; padding: 5px 15px; background-color: rgba(255,255,255,0.2); border-radius: 5px; text-decoration: none;">
+          Login
+        </a>
+      }
+    </div>
+  </div>
+</header>

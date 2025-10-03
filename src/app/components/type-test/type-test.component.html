@@ -1,0 +1,42 @@
+
+<div class="typing-speed-container" (click)="focusOnText()" #container>
+  <div class="content-wrapper">
+    <h1 class="main-title">Test Your Typing Speed</h1>
+    <p class="subtitle">"Practice makes perfect. Type carefully and quickly!"</p>
+    <div class="text-section">
+      <div class="test-text"
+           #testTextElement
+           tabindex="0"
+           (focus)="onTextFocus()"
+           (keydown)="onKeyDown($event)">
+       
+        <span *ngFor="let char of testTextArray; let i = index" 
+              [class]="getCharClass(i)">{{ char }}</span>
+        
+        <!-- Cursor at the end if we've typed all characters -->
+        <span *ngIf="isActive && currentCharIndex >= testTextArray.length" 
+              class="cursor cursor-active"></span>
+      </div>
+      
+      <div *ngIf="!hasStarted && !testCompleted" class="instructions">
+        <p>Click on the text above and start typing to begin the test!</p>
+      </div>
+      
+      <div *ngIf="hasStarted || testCompleted" class="stats">
+        <div class="stat">
+          <span class="stat-value">{{ timeRemaining }}</span>
+          <span class="stat-label">seconds</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="button-group">
+      <button class="try-again-btn" (click)="resetTest()">
+        <i class="fas fa-redo"></i> Try Again
+      </button>
+      <button *ngIf="testCompleted" class="see-results-btn" (click)="seeResults()">
+        See Results
+      </button>
+    </div>
+  </div>
+</div>
